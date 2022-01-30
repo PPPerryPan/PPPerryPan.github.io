@@ -21,7 +21,7 @@ module.exports = {
   "theme": "reco",
   "locales": {
     '/': {
-      lang: 'zh-CN'
+      lang: 'zh-cn'
     }
   },
   "themeConfig": {
