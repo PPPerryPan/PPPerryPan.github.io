@@ -26,7 +26,6 @@ module.exports = {
   },
   "themeConfig": {
     author : "Perry",
-    subSidebar: 'auto',
     "nav": [
       {
         "text": "主页",
@@ -94,4 +93,7 @@ module.exports = {
   "markdown": {
     "lineNumbers": true
   },
+  themeConfig: {
+    subSidebar: 'auto'//在所有页面中启用自动生成子侧边栏，原 sidebar 仍然兼容
+  }
 }
