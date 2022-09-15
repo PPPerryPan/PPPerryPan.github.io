@@ -8,6 +8,6 @@ git add -A
 git commit -m 'deploy_dev'
 
 # 发布到GitHub
-git push -f git@github.com:PPPerryPan/ppperrypan.github.io-new.git dev:dev
+git push -f git@github.com:PPPerryPan/ppperrypan.github.io-new.git master:dev
 
 cd -
