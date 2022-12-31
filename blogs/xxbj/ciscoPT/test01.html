@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>交换机的Telnet远程登录配置 | 佩里的实验室</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="--- 加载中 ---">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.b3ab48fe.css" as="style"><link rel="preload" href="/assets/js/app.2157803d.js" as="script"><link rel="preload" href="/assets/js/6.d710b819.js" as="script"><link rel="preload" href="/assets/js/1.c3de0c7b.js" as="script"><link rel="preload" href="/assets/js/67.fca927ad.js" as="script"><link rel="prefetch" href="/assets/js/10.721d813b.js"><link rel="prefetch" href="/assets/js/11.023bb962.js"><link rel="prefetch" href="/assets/js/12.ff14a839.js"><link rel="prefetch" href="/assets/js/13.4605a54d.js"><link rel="prefetch" href="/assets/js/14.95a9e9c6.js"><link rel="prefetch" href="/assets/js/15.60065c74.js"><link rel="prefetch" href="/assets/js/16.2c243327.js"><link rel="prefetch" href="/assets/js/17.1d59248c.js"><link rel="prefetch" href="/assets/js/18.6f7c8dea.js"><link rel="prefetch" href="/assets/js/19.9f73364d.js"><link rel="prefetch" href="/assets/js/20.fabafa6e.js"><link rel="prefetch" href="/assets/js/21.d91fcb0b.js"><link rel="prefetch" href="/assets/js/22.68bf39f0.js"><link rel="prefetch" href="/assets/js/23.2c5c2098.js"><link rel="prefetch" href="/assets/js/24.ba2cc227.js"><link rel="prefetch" href="/assets/js/25.49917134.js"><link rel="prefetch" href="/assets/js/26.c4bedf6f.js"><link rel="prefetch" href="/assets/js/27.99a139bc.js"><link rel="prefetch" href="/assets/js/28.0fb98c14.js"><link rel="prefetch" href="/assets/js/29.005f0172.js"><link rel="prefetch" href="/assets/js/3.1a408002.js"><link rel="prefetch" href="/assets/js/30.c06ed070.js"><link rel="prefetch" href="/assets/js/31.4b333aa1.js"><link rel="prefetch" href="/assets/js/32.b58ca2f9.js"><link rel="prefetch" href="/assets/js/33.23990a19.js"><link rel="prefetch" href="/assets/js/34.0cb312ce.js"><link rel="prefetch" href="/assets/js/35.4cdbabe0.js"><link rel="prefetch" href="/assets/js/36.10245aaa.js"><link rel="prefetch" href="/assets/js/37.8b3f8853.js"><link rel="prefetch" href="/assets/js/38.35fb2b57.js"><link rel="prefetch" href="/assets/js/39.17aeb854.js"><link rel="prefetch" href="/assets/js/4.06730034.js"><link rel="prefetch" href="/assets/js/40.ae4041b9.js"><link rel="prefetch" href="/assets/js/41.4f20c226.js"><link rel="prefetch" href="/assets/js/42.966c4cf3.js"><link rel="prefetch" href="/assets/js/43.3214e468.js"><link rel="prefetch" href="/assets/js/44.ae702439.js"><link rel="prefetch" href="/assets/js/45.f7f65592.js"><link rel="prefetch" href="/assets/js/46.138ba313.js"><link rel="prefetch" href="/assets/js/47.10819b21.js"><link rel="prefetch" href="/assets/js/48.b53e8a2c.js"><link rel="prefetch" href="/assets/js/49.b66f8d5f.js"><link rel="prefetch" href="/assets/js/5.6542d400.js"><link rel="prefetch" href="/assets/js/50.0d40db64.js"><link rel="prefetch" href="/assets/js/51.a2261973.js"><link rel="prefetch" href="/assets/js/52.42786f04.js"><link rel="prefetch" href="/assets/js/53.52116a2c.js"><link rel="prefetch" href="/assets/js/54.bbe77239.js"><link rel="prefetch" href="/assets/js/55.4ca3b81d.js"><link rel="prefetch" href="/assets/js/56.30376eac.js"><link rel="prefetch" href="/assets/js/57.192351ec.js"><link rel="prefetch" href="/assets/js/58.e9751df3.js"><link rel="prefetch" href="/assets/js/59.ec10a9ec.js"><link rel="prefetch" href="/assets/js/60.3b3a112a.js"><link rel="prefetch" href="/assets/js/61.260eaa94.js"><link rel="prefetch" href="/assets/js/62.3bacfb5f.js"><link rel="prefetch" href="/assets/js/63.d4a97e36.js"><link rel="prefetch" href="/assets/js/64.db5939fd.js"><link rel="prefetch" href="/assets/js/65.e6369e46.js"><link rel="prefetch" href="/assets/js/66.e6acc251.js"><link rel="prefetch" href="/assets/js/68.f12bd9fa.js"><link rel="prefetch" href="/assets/js/69.09abcac1.js"><link rel="prefetch" href="/assets/js/7.e8a47b47.js"><link rel="prefetch" href="/assets/js/70.0840639a.js"><link rel="prefetch" href="/assets/js/71.cb5b826c.js"><link rel="prefetch" href="/assets/js/72.89a42c08.js"><link rel="prefetch" href="/assets/js/73.3817e6d8.js"><link rel="prefetch" href="/assets/js/74.7514eb1b.js"><link rel="prefetch" href="/assets/js/75.d40022e0.js"><link rel="prefetch" href="/assets/js/76.4badd923.js"><link rel="prefetch" href="/assets/js/77.20705682.js"><link rel="prefetch" href="/assets/js/8.fd3ce694.js"><link rel="prefetch" href="/assets/js/9.8445b0c7.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b3ab48fe.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-1aefc0b4><div data-v-1aefc0b4><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1aefc0b4 data-v-1aefc0b4><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>佩里的实验室</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2>--- 加载中 ---</p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><!---->
+            
+          <span data-v-25ba6db2>2019 - </span>
+          2022
+        </a></span></div></div> <div class="hide" data-v-1aefc0b4><header class="navbar" data-v-1aefc0b4><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.jpg" alt="佩里的实验室" class="logo"> <span class="site-name">佩里的实验室</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/技术杂谈/" class="nav-link"><i class="undefined"></i>
+  技术杂谈
+</a></li><li class="dropdown-item"><!----> <a href="/categories/未定义的/" class="nav-link"><i class="undefined"></i>
+  未定义的
+</a></li><li class="dropdown-item"><!----> <a href="/categories/生活小记/" class="nav-link"><i class="undefined"></i>
+  生活小记
+</a></li><li class="dropdown-item"><!----> <a href="/categories/学习笔记/" class="nav-link"><i class="undefined"></i>
+  学习笔记
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      联系
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/PPPerryPan" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1aefc0b4></div> <aside class="sidebar" data-v-1aefc0b4><div class="personal-info-wrapper" data-v-39576ba9 data-v-1aefc0b4><img src="/logo.jpg" alt="author-avatar" class="personal-img" data-v-39576ba9> <!----> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>67</h3> <h6 data-v-39576ba9>文章</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>10</h3> <h6 data-v-39576ba9>标签</h6></div></div> <ul class="social-links" data-v-39576ba9></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/技术杂谈/" class="nav-link"><i class="undefined"></i>
+  技术杂谈
+</a></li><li class="dropdown-item"><!----> <a href="/categories/未定义的/" class="nav-link"><i class="undefined"></i>
+  未定义的
+</a></li><li class="dropdown-item"><!----> <a href="/categories/生活小记/" class="nav-link"><i class="undefined"></i>
+  生活小记
+</a></li><li class="dropdown-item"><!----> <a href="/categories/学习笔记/" class="nav-link"><i class="undefined"></i>
+  学习笔记
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      联系
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/PPPerryPan" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>交换机的Telnet远程登录配置</h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><!---->
+            
+          <span data-v-25ba6db2>2019 - </span>
+          2022
+        </a></span></div></div> <div data-v-1aefc0b4><main class="page" style="padding-right:0;"><section><div class="page-title"><h1 class="title">交换机的Telnet远程登录配置</h1> <div data-v-f875f3fc><!----> <i class="iconfont reco-date" data-v-f875f3fc><span data-v-f875f3fc>2022/1/24</span></i> <!----> <i class="tags iconfont reco-tag" data-v-f875f3fc><span class="tag-item" data-v-f875f3fc>路由交换</span></i></div></div> <div class="theme-reco-content content__default"><ol><li>新建PT拓扑图</li></ol> <p><img src="data:image/png;base64,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" alt="1.1"></p> <ol start="2"><li>配置交换机管理IP地址</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>Switch(config)#interface vlan 1		!对整个vlan1进行配置和管理IP地址（注：此处IP地址必须和PC同一网段
+Switch(config-if)#ip add...			
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>Switch&gt;enable 
+Switch#conf t	!相当于config terminal：进入全局配置模式
+Enter configuration commands, one per line.  End with CNTL/Z.
+
+!配置交换机的管理IP地址
+Switch(config)# interface vlan 1	!默认情况下交换机所有端口都在vlan1
+Switch(config-if)#ip address 192.168.1.1 255.255.255.0
+
+!开启vlan1的状态
+Switch(config-if)#no shutdown
+Switch(config-if)#
+%LINK-5-CHANGED: Interface Vlan1, changed state to up
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan1, changed state to up
+
+! 退回上一步
+Switch(config-if)#exit
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><ol start="3"><li>配置用户登录密码</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>Switch(config)#enable password		!设置进入特权模式的密码
+Switch(config)#line vty 0 4
+Switch(config-line)#password 123456	!配置远程登陆密码
+Switch(config)#login
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>!设置进入特权模式的登录密码
+Switch(config)#enable password 123456
+
+!设置Telnet远程登录密码
+Switch(config)#line vty 0 4
+Switch(config-line)#password 112233
+Switch(config-line)#login
+Switch(config-line)#end
+Switch#
+%SYS-5-CONFIG_I: Configured from console by console
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><ol start="4"><li>查看</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>Switch#show run							!相当于show running-config
+Building configuration...
+
+Current configuration : 1135 bytes
+!
+version 15.0
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Switch
+!
+enable password 123456					!特权模式密码
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+......
+interface FastEthernet0/24
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ ip address 192.168.1.1 255.255.255.0	!vlan1的IP地址
+!
+!
+!
+!
+line con 0
+!
+line vty 0 4
+ password 112233						!远程登录密码
+ login
+line vty 5 15
+ login
+!
+!
+!
+!
+end
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br></div></div><ol start="5"><li><p>设置PC1的IP地址</p> <p>IPv4 Address: 192.168.1.2</p> <p>Subnet Mask: 255.255.255.0</p> <p>Default Gateway: 192.168.1.1</p></li> <li><p>在PC1上配置交换机</p></li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>!先ping一下通不通
+Pinging 192.168.1.1 with 32 bytes of data:
+
+Request timed out.
+Reply from 192.168.1.1: bytes=32 time&lt;1ms TTL=255
+Reply from 192.168.1.1: bytes=32 time&lt;1ms TTL=255
+Reply from 192.168.1.1: bytes=32 time&lt;1ms TTL=255
+
+Ping statistics for 192.168.1.1:
+    Packets: Sent = 4, Received = 3, Lost = 1 (25% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
+    
+!Telent连接
+C:\&gt;telnet 192.168.1.1
+Trying 192.168.1.1 ...Open
+
+
+User Access Verification
+
+Password: 		!输入远程登录密码112233，无回显。
+Switch&gt;enable
+Password: 		!输入特权模式密码123456，无回显。
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#exit
+
+!查看
+Switch#show run	!相当于show running-config
+Building configuration...
+
+Current configuration : 1135 bytes
+!
+version 15.0
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Switch
+!
+enable password 123456
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+......
+interface FastEthernet0/24
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ ip address 192.168.1.1 255.255.255.0
+!
+!
+!
+!
+line con 0
+!
+line vty 0 4
+ password 112233
+ login
+line vty 5 15
+ login
+!
+!
+!
+!
+end
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br></div></div></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">2022/3/8 下午5:02:53</span></div></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:0;" data-v-cb1513f6></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.2157803d.js" defer></script><script src="/assets/js/6.d710b819.js" defer></script><script src="/assets/js/1.c3de0c7b.js" defer></script><script src="/assets/js/67.fca927ad.js" defer></script>
+  </body>
+</html>

