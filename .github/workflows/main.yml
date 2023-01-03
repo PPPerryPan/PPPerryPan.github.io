@@ -1,0 +1,42 @@
+name: Automatic blog update # 该Action的名字
+
+# on:何时触发该事件. 
+on:
+  # 在push或pull请求事件时触发工作流，但只针对dev分支
+  push:
+    branches: [ dev ]
+  pull_request:
+    branches: [ dev ]
+
+  # 允许从Actions选项卡手动运行此工作流
+  workflow_dispatch:
+
+# 工作流运行由一个或多个jobs组成，这些job可以按顺序或并行运行
+jobs:
+  # 此工作流包含一个名为“build-deploy”的job。
+  build-deploy:
+    # 该job运行于什么虚拟机上
+    runs-on: ubuntu-latest
+
+    # steps表示将作为job一部分执行的一系列任务
+    steps:
+      - uses: actions/checkout@master # 使用 github.com/actions/checkout/tree/releases/v2
+        with:
+         fetch-depth: 2 
+
+      - name: Use Node.js 14 #使用nodejs版本
+        uses: actions/setup-node@v1 
+        with:
+          node-version: '14'
+
+      - name: install and build #安装以来并打包，执行的是项目我们定义的命令
+        run: npm install && npm run build
+        
+      - name: deploy #部署
+        uses: peaceiris/actions-gh-pages@v3 #和上面一样，这里使用的是他人写好的插件库，作用是发布到其他仓库中或者其他分支上，想要具体了解可以在插件库中搜索
+        with:
+          deploy_key: ${{ secrets.BLOG }} # key
+          external_repository: PPPerryPan/ppperrypan.github.io #推送到该仓库中，地址格式为github名称/仓库名
+          publish_branch: gh-pages #分支名
+          publish_dir: docs/.vuepress/dist #要推送的内容（打包后的博客文件夹）
+       
