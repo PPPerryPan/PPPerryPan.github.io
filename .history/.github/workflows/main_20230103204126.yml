@@ -36,7 +36,7 @@ jobs:
         uses: jenkey2011/vuepress-deploy@v3 #和上面一样，这里使用的是他人写好的插件库，作用是发布到其他仓库中或者其他分支上，想要具体了解可以在插件库中搜索
         with:
           deploy_key: ${{ secrets.DEPLOY_TOKEN }} # key
-          personal_token: ${{ secrets.ACCESS_TOKEN }}
+          github_token: ${{ secrets.ACCESS_TOKEN }}
           external_repository: PPPerryPan/ppperrypan.github.io #推送到该仓库中，地址格式为github名称/仓库名
           publish_branch: gh-pages #分支名
           publish_dir: public #要推送的内容（打包后的博客文件夹）
