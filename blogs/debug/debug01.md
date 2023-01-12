@@ -1,5 +1,5 @@
 ---
-title: 删号了？又被封号了？Ins输不同密码居然能进不同帐号？
+title: 删号了？又被封号了？Instagram 输不同密码居然能进不同帐号？
 date: 2022-02-22
 tags:
  - Debug

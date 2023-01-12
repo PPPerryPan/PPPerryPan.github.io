@@ -1,5 +1,5 @@
 ---
-title: 怎么让网易云游戏自动登录Sky国际服
+title: 怎么让网易云游戏自动登录 Sky 国际服
 date: 2022-08-27
 tags:
  - Debug
